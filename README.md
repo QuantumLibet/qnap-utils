@@ -1,7 +1,7 @@
-# qnap-utils
+## qnap-utils
 Utilities to unpack QNAP firmware images and QPKG files
 
-## extract_qnap_fw.sh
+### extract_qnap_fw.sh
 
 This script unpacks a firmware image. The firmware image can be passed in the
 original form (\*.img), decrypted (\*.tgz), or as a source directory.
@@ -18,7 +18,7 @@ this results in:
     destdir/sysroot         unpacked initrd/initramfs, rootfs2, rootfs_ext
     destdir/qpkg            unpacked qpkg.tar
 
-## extract_qpkg.sh
+### extract_qpkg.sh
 
 This script unpacks a QPKG file.
 
@@ -28,7 +28,9 @@ Usage:
 
 Another way to do this would be using the QDK tool.
 
-## what is different compared to the original max-boehm tools?
+</br>
+</br>
+### what is different compared to the original max-boehm tools?
 
 The max-boehm script does not work on macOS for two reasons:
 
@@ -36,7 +38,7 @@ Reason 1:
 
     SKIP=`wc -c < $DEST/header_script`
 
-On macOS, 'wc -c' has a leading tab.
+On macOS, `wc -c` has a leading tab.
 The solution would be:
 
     SKIP=$(sed -n 's/script_len=\(.*\)/\1/p' $DEST/header_script)
@@ -45,7 +47,7 @@ Reason 2:
 
     od -t x1 -w4 -Ad -v $DEST/payload | grep '1f 8b 08 00' | awk '{print $1}'
 
-The macOS version of 'od' does not support the parameter '-w' (--width).
+The macOS version of `od` does not support the parameter `-w` (--width).
 A solution would be:
 
     printf "%d\n" $(hexdump -C $DEST/payload | grep '1f 8b 08 00' | awk '{print "0x"$1}')
