@@ -30,6 +30,7 @@ Another way to do this would be using the QDK tool.
 
 </br>
 </br>
+
 ### what is different compared to the original max-boehm tools?
 
 The max-boehm script does not work on macOS for two reasons:
@@ -56,4 +57,4 @@ A solution would be:
     'print "0x"$1' will output the position with a leading '0x'
     'printf "%d"' will convert a hexadecimal to decimal number
 
-The `exatract.qpkg` script has been amended.
+The `extract.qpkg` script has been amended.
