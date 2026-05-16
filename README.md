@@ -40,7 +40,7 @@ Reason 1:
     SKIP=`wc -c < $DEST/header_script`
 
 On macOS, `wc -c` has a leading tab.
-The solution would be:
+The solution is:
 
     SKIP=$(sed -n 's/script_len=\(.*\)/\1/p' $DEST/header_script)
 
@@ -49,7 +49,7 @@ Reason 2:
     od -t x1 -w4 -Ad -v $DEST/payload | grep '1f 8b 08 00' | awk '{print $1}'
 
 The macOS version of `od` does not support the parameter `-w` (--width).
-A solution would be:
+A solution is:
 
     printf "%d\n" $(hexdump -C $DEST/payload | grep '1f 8b 08 00' | awk '{print "0x"$1}')
 
